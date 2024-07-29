@@ -1,0 +1,8 @@
+flask
+flask-cors
+pandas
+numpy==1.19.5
+scikit-learn
+torch
+joblib
+spacy==3.0.6

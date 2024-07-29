@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sentiment Analysis Result</title>
+</head>
+<body>
+    <h1>Sentiment Analysis Result</h1>
+    
+    <p><strong>Email Content:</strong><br>{{ email_content | safe }}</p>
+    <p><strong>Sentiment:</strong> {{ sentiment }}</p>
+    <p><strong>Related to Enron's Oil & Gas Business:</strong> {{ related_to_enron_oil_gas }}</p>
+    
+    {% if entities %}
+    <h2>Entities Found:</h2>
+    <ul>
+        {% if entities['persons'] %}
+        <li><strong>Persons:</strong>
+            <ul>
+                {% for person in entities['persons'] %}
+                <li>{{ person }}</li>
+                {% endfor %}
+            </ul>
+        </li>
+        {% endif %}
+        
+        {% if entities['organizations'] %}
+        <li><strong>Organizations:</strong>
+            <ul>
+                {% for org in entities['organizations'] %}
+                <li>{{ org }}</li>
+                {% endfor %}
+            </ul>
+        </li>
+        {% endif %}
+    </ul>
+    {% else %}
+    <p>No entities found.</p>
+    {% endif %}
+    
+</body>
+</html>
